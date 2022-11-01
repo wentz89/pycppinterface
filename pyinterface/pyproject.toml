@@ -1,0 +1,11 @@
+[project]
+name = "pyinterface"
+description = "Python CPP Interface using CPP Class as Parent"
+version = "0.1.0"
+authors = [
+    { name = "Alexander Wentz", email = "wentz.alexander@gmail.com" }
+]
+
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=63.0.0", "wheel"]
