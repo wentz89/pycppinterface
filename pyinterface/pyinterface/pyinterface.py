@@ -1,3 +1,5 @@
+#Copyright (C) 2022  Alexander Wentz
+
 from interfaceCPP.interfaceCPP import Base
 from typing import List
 

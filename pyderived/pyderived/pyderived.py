@@ -1,3 +1,5 @@
+# Copyright (C) 2022  Alexander Wentz
+
 from pyinterface.pyinterface import VirtualBasePy
 from typing import List
 

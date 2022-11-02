@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2022  Alexander Wentz
+ */
+
 #include <stdio.h>
 
 #include "base.h"
