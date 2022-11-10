@@ -30,14 +30,14 @@ execute_process(
     COMMAND "${Python3_EXECUTABLE}" -m build "${CMAKE_CURRENT_LIST_DIR}/pyinterface"
     --wheel --no-isolation -o "${CMAKE_BINARY_DIR}/dist"
 )
-execute_process (COMMAND "${Python3_EXECUTABLE}" -m pip install "${CMAKE_BINARY_DIR}/dist/pyinterface-0.1.0-py3-none-any.whl")
+execute_process (COMMAND "${Python3_EXECUTABLE}" -m pip install "${CMAKE_BINARY_DIR}/dist/pyinterface-0.1.0-py3-none-any.whl" --force-reinstall)
 
 # build and install the first python example
 execute_process(
     COMMAND "${Python3_EXECUTABLE}" -m build "${CMAKE_CURRENT_LIST_DIR}/pyderived"
     --wheel --no-isolation -o "${CMAKE_BINARY_DIR}/dist"
 )
-execute_process (COMMAND "${Python3_EXECUTABLE}" -m pip install "${CMAKE_BINARY_DIR}/dist/pyderived-0.1.0-py3-none-any.whl")
+execute_process (COMMAND "${Python3_EXECUTABLE}" -m pip install "${CMAKE_BINARY_DIR}/dist/pyderived-0.1.0-py3-none-any.whl" --force-reinstall)
 
 # add_custom_command(
 #     OUTPUT ${VENV}
@@ -71,13 +71,17 @@ target_compile_definitions(
 )
 
 #add the example library
-pybind11_add_module(derivedExample src/derived.cpp src/derived.h)
+pybind11_add_module(derivedExample STATIC src/derived.cpp src/derived.h)
 target_link_libraries(derivedExample PUBLIC interfaceCPPcpp)
 # define (VERSION_INFO) here.
 target_compile_definitions(
     derivedExample
     PRIVATE VERSION_INFO=${EXAMPLE_VERSION_INFO}
 )
+
+add_executable(myexe src/myexec.cpp)
+
+target_link_libraries(myexe derivedExample)
 
 #TODO create an executable and to use the example library
 

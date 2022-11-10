@@ -6,6 +6,13 @@ sudo pip3 install "pybind11[global]"
 
 
 mkdir build
+
 cd build
+
 cmake ..
+
 make 
+
+source ../venv/bin/activate
+
+./myexe

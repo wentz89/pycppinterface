@@ -15,6 +15,12 @@ DerivedCpp::DerivedCpp(std::string moduleName) : Base(moduleName)
 
 }
 
+DerivedCpp::~DerivedCpp()
+{
+    py::scoped_interpreter guard{};
+    mObject.~object();
+}
+
 uint8_t DerivedCpp::Run(std::vector<uint8_t> &args)
 {
     py::scoped_interpreter guard{}; // auto release when this variable goes out of scope

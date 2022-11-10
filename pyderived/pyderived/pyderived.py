@@ -7,7 +7,7 @@ from typing import List
 
 class pyderived(VirtualBasePy):
     def __init__(self, name):
-        super(Derived, self).__init__(name)
+        super(pyderived, self).__init__(name)
 
     def Run(self, args: List[int]) -> int:
         return args[0]
